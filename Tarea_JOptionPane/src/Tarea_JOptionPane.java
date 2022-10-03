@@ -2,7 +2,10 @@ import javax.swing.JOptionPane;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.FileNotFoundException;
 
 public class Tarea_JOptionPane {
 	public static void main(String[] args) {
@@ -17,7 +20,7 @@ public class Tarea_JOptionPane {
 		String[] opciones = { "Crear archivo", "Mostrar archivo", "Terminar" };
 		String[] opciones_mostrar = { "Nombre", "Contenido", "Cancelar" };
 		while (exit != true) {
-			select = JOptionPane.showOptionDialog(null, "Seleccione una opción", "Menú gestor de archivos",
+			select = JOptionPane.showOptionDialog(null, "Seleccione una opciï¿½n", "Menï¿½ gestor de archivos",
 					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION, null, opciones, opciones[1]);
 			switch (select) {
 			case 0:
@@ -28,11 +31,9 @@ public class Tarea_JOptionPane {
 					file = new File(ruta);
 					FileWriter fw = new FileWriter(file);
 					BufferedWriter bw = new BufferedWriter(fw);
-					if (!file.exists()) {
-						file.createNewFile();
-						bw.write(contenido);
-						bw.close();
-					}
+					file.createNewFile();
+					bw.write(contenido);
+					bw.close();
 				} catch (IOException e) {
 					JOptionPane.showMessageDialog(null, "Error de E/S de datos");
 				}
@@ -40,20 +41,32 @@ public class Tarea_JOptionPane {
 			case 1:
 				ruta = JOptionPane.showInputDialog(null, "Introduzca la ruta del archivo: ");
 				file = new File(ruta);
-				//Comprueba que el archivo introducido exista
+				// Comprueba que el archivo introducido exista
 				if (!file.exists()) {
-					select = JOptionPane.showOptionDialog(null, "Seleccione una opción", "Mostrar archivo",
+					select = JOptionPane.showOptionDialog(null, "Seleccione una opciï¿½n", "Mostrar archivo",
 							JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION, null, opciones_mostrar,
 							opciones_mostrar[1]);
-					//Muestra el nombre del archivo
+					// Muestra el nombre del archivo
 					if (select == 0) {
 						JOptionPane.showMessageDialog(null, "Nombre de archivo: " + file.getName());
-					//Muestra el contenido del archivo
+						// Muestra el contenido del archivo
 					} else if (select == 1) {
-						
+						try {
+							FileReader fr = new FileReader(file);
+							BufferedReader br = new BufferedReader(fr);
+							String linea;
+							while (br.readLine() != null) {
+								linea = br.readLine();
+								JOptionPane.showMessageDialog(null, linea);
+							}
+						} catch (FileNotFoundException e) {
+							JOptionPane.showMessageDialog(null, "Archivo no encontrado");
+						} catch (IOException e) {
+							JOptionPane.showMessageDialog(null, "Error de E/S de datos.");
+						}
+					} else {
+						JOptionPane.showMessageDialog(null, "Archivo no encontrado");
 					}
-				} else {
-					JOptionPane.showMessageDialog(null, "Archivo no encontrado");
 				}
 				break;
 			case 2:
