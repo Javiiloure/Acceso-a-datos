@@ -1,0 +1,6 @@
+Cliente 1 Nombre=Javier, Apellidos=Loureiro, Telefono=634616442, Direccion=Vigo Calle Zaragoza n8 1ºA]
+Cliente 2 Nombre=Zacarías, Apellidos=Leche del Monte, Telefono=607335304, Direccion=Madrid Avenida de Gran Vía 150 8ºC]
+Cliente 3 Nombre=Elsa, Apellidos=Porrico Grande, Telefono=745003268, Direccion=A Coruña Calle Ramon i Cajal 80 4ºK]
+Cliente 4 Nombre=Armando, Apellidos=Paredes del Gadas, Telefono=621458056, Direccion=Barcelona Plaza de España 8 12ºE]
+Cliente 5 Nombre=Susana, Apellidos=Horia, Telefono=774560023, Direccion=Salamanca Calle del Agua 10 5ºB]
+Cliente 6 Nombre=Juan, Apellidos=Lopez, Telefono=6545412, Direccion=Calle Zmaora]
