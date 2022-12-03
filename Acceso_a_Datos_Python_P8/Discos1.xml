@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discos>
+    <disco nombre="El madrileño" artista="C.Tangana" genero="Urbano Latino" año="2021">
+        <cancion nombre="Ingobernable" duracion="3:08" />
+        <cancion nombre="Tu me dejaste de querer" duracion="3:19" />
+        <cancion nombre="Demasiadas mujeres" duracion="2:34" />
+    </disco>
+
+    <disco nombre="Handmade" artista="Craneo" genero="Rap" año="2014">
+        <cancion nombre="Fly Chill" duracion="3:55" />
+        <cancion nombre="Clouds" duracion="2:46" />
+        <cancion nombre="In a Tree" duracion="2:58" />
+    </disco>
+
+    <disco nombre="El madrileño" artista="C.Tangana" genero="Urbano Latino" año="2021">
+        <cancion nombre="Ingobernable" duracion="3:08" />
+        <cancion nombre="Tu me dejaste de querer" duracion="3:19" />
+        <cancion nombre="Demasiadas mujeres" duracion="2:34" />
+    </disco>
+
+    <disco nombre="Handmade" artista="Craneo" genero="Rap" año="2014">
+        <cancion nombre="Fly Chill" duracion="3:55" />
+        <cancion nombre="Clouds" duracion="2:46" />
+        <cancion nombre="In a Tree" duracion="2:58" />
+    </disco>
+
+    <disco nombre="El madrileño" artista="C.Tangana" genero="Urbano Latino" año="2021">
+        <cancion nombre="Ingobernable" duracion="3:08" />
+        <cancion nombre="Tu me dejaste de querer" duracion="3:19" />
+        <cancion nombre="Demasiadas mujeres" duracion="2:34" />
+    </disco>
+
+    <disco nombre="Handmade" artista="Craneo" genero="Rap" año="2014">
+        <cancion nombre="Fly Chill" duracion="3:55" />
+        <cancion nombre="Clouds" duracion="2:46" />
+        <cancion nombre="In a Tree" duracion="2:58" />
+    </disco>
+
+    <disco nombre="El madrileño" artista="C.Tangana" genero="Urbano Latino" año="2021">
+        <cancion nombre="Ingobernable" duracion="3:08" />
+        <cancion nombre="Tu me dejaste de querer" duracion="3:19" />
+        <cancion nombre="Demasiadas mujeres" duracion="2:34" />
+    </disco>
+
+    <disco nombre="Handmade" artista="Craneo" genero="Rap" año="2014">
+        <cancion nombre="Fly Chill" duracion="3:55" />
+        <cancion nombre="Clouds" duracion="2:46" />
+        <cancion nombre="In a Tree" duracion="2:58" />
+    </disco>
+
+    <disco nombre="El madrileño" artista="C.Tangana" genero="Urbano Latino" año="2021">
+        <cancion nombre="Ingobernable" duracion="3:08" />
+        <cancion nombre="Tu me dejaste de querer" duracion="3:19" />
+        <cancion nombre="Demasiadas mujeres" duracion="2:34" />
+    </disco>
+
+    <disco nombre="Handmade" artista="Craneo" genero="Rap" año="2014">
+        <cancion nombre="Fly Chill" duracion="3:55" />
+        <cancion nombre="Clouds" duracion="2:46" />
+        <cancion nombre="In a Tree" duracion="2:58" />
+    </disco>
+
+    <disco nombre="El madrileño" artista="C.Tangana" genero="Urbano Latino" año="2021">
+        <cancion nombre="Ingobernable" duracion="3:08" />
+        <cancion nombre="Tu me dejaste de querer" duracion="3:19" />
+        <cancion nombre="Demasiadas mujeres" duracion="2:34" />
+    </disco>
+
+    <disco nombre="Handmade" artista="Craneo" genero="Rap" año="2014">
+        <cancion nombre="Fly Chill" duracion="3:55" />
+        <cancion nombre="Clouds" duracion="2:46" />
+        <cancion nombre="In a Tree" duracion="2:58" />
+    </disco>
+    
+</discos>

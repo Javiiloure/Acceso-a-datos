@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discos>
+    <disco nombre="Dark side od the moon" artista="Pink Floyd" genero="Rock Psicodelico" año="1973">
+        <cancion nombre="Time" duracion="7:05" />
+        <cancion nombre="Money" duracion="6:23" />
+        <cancion nombre="Us and them" duracion="7:50" />
+    </disco>
+
+    <disco nombre="Animales" artista="Pereza" genero="Rock Español" año="2005">
+        <cancion nombre="Pricesas" duracion="3:37" />
+        <cancion nombre="Lo que tengo yo adentro" duracion="3:09" />
+        <cancion nombre="Todo" duracion="4:21" />
+    </disco>
+</discos>
