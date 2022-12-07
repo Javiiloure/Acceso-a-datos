@@ -1,0 +1,7 @@
+<discos>
+    <disco nombre="disco 1">
+        <cancion nombre="cancion 1">Cancion 1</cancion>
+        <cancion nombre="cancion 2">Cancion 2</cancion>
+        <cancion nombre="cancion 3">Cancion 3</cancion>
+    </disco>
+</discos>
