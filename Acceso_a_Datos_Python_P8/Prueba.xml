@@ -1,1 +1,1 @@
-<discos />
+<discos><disco nombre="Disco" artista="Artista" genero="Genero" anho="2022"><cancion nombre="'Cancion" duracion="Duracion" /><cancion nombre="Cancion" duracion="Duracion" /><cancion nombre="Cancion" duracion="Duracion" /><cancion nombre="Cancion" duracion="Duracion" /></disco></discos>
