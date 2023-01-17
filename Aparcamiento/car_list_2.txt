@@ -1,0 +1,4 @@
+Car [id=5, brand=Peugeot, color=Red, plate=5698HDC]
+Car [id=6, brand=Audi, color=White, plate=8471KLB]
+Car [id=7, brand=BMW, color=Black, plate=3458DFC]
+Car [id=8, brand=Honda, color=Gray, plate=8214LOP]
