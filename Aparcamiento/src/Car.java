@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.BufferedReader;
 import java.io.IOException;
 
@@ -107,5 +108,22 @@ public class Car {
 
 	public static void createVehicle(File car_list) {
 		
+		// Asking for the car attributes
+		String brand = JOptionPane.showInputDialog("Enter the vehicles' brand: ");
+		String color = JOptionPane.showInputDialog("Enter the vehicles' color: ");
+		String plate = JOptionPane.showInputDialog("Enter the vehicles' plate: ");
+		
+		// Crating the car object and adding it to the ArrayList in main
+		Car car = new Car(brand, color, plate);
+		Main.cars.add(car);
+		
+		try {
+			FileWriter fw = new FileWriter(car_list, true);
+			fw.write(car.toString());
+			fw.flush();
+			fw.close();
+		} catch(IOException e) {
+			JOptionPane.showMessageDialog(null, "Input/Output data error", "Error", JOptionPane.ERROR_MESSAGE);
+		}
 	}
 }

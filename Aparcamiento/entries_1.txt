@@ -1,0 +1,1 @@
+Car [id=7, brand=BMW, color=Black, plate=3458DFC] 17/01/2023 23:01:16

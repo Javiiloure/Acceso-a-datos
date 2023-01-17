@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.BufferedReader;
 import java.io.IOException;
 
@@ -8,6 +9,10 @@ import javax.swing.JFileChooser;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import java.awt.Dimension;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Entry {
 	
 	public static JFileChooser filechooser = new JFileChooser();
@@ -43,7 +48,29 @@ public class Entry {
 		}
 	}
 	
-	public static void newEntry(File entries) {
+	public static void newEntry(File entries) throws IOException {
 		
+		String id = JOptionPane.showInputDialog("Enter the car's id: ");
+		int i;
+		// Checking if the car is registered
+		boolean aux = false;
+		for(i = 0; i < Main.cars.size(); i++) {
+			if(Main.cars.get(i).getId().equals(id)) {
+				aux = true;
+				break;
+			}
+		}
+		if(aux == false) {
+			JOptionPane.showMessageDialog(null, "The id entered was not found", "Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		Date date = new Date();
+		FileWriter fw = new FileWriter(entries, true);
+		
+		fw.write(Main.cars.get(i).toString() + " " + formatter.format(date));
+		fw.flush();
+		fw.close();
 	}
 }

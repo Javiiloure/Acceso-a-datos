@@ -61,7 +61,11 @@ public class Main {
 				Car.createVehicle(car_list);
 				break;
 			case 5:
-				Entry.newEntry(entries);
+				try {
+					Entry.newEntry(entries);
+				} catch(IOException e) {
+					JOptionPane.showMessageDialog(null, "Input/Output data error", "Error", JOptionPane.ERROR_MESSAGE);
+				}
 				break;
 			case 6:
 				Exit.newExit(exits);
@@ -100,7 +104,7 @@ public class Main {
 		} else {
 			try {
 				int count = 1;
-				// We will add all the cars in the cars files to the arraylist
+				// We will add all the cars in the cars files to the ArrayList
 				while (car_list.exists()) {
 					String brand;
 					String color;
@@ -148,6 +152,8 @@ public class Main {
 					car_list = new File("car_list_" + String.valueOf(count) + ".txt");
 					br.close();
 				}
+				count--;
+				car_list = new File("car_list_" + String.valueOf(count) + ".txt");
 			} catch (IOException e) {
 				JOptionPane.showMessageDialog(null, "Input/Output data error", "Error", JOptionPane.ERROR_MESSAGE);
 			}
