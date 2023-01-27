@@ -1,0 +1,9 @@
+<!ELEMENT personas (persona+)>
+<!ELEMENT persona (nombre, apellidos, usuario, fecha_nacimiento, telefono, sexo, calificacion)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT apellidos (#PCDATA)>
+<!ELEMENT usuario (#PCDATA)>
+<!ELEMENT fecha_nacimiento (#PCDATA)>
+<!ELEMENT telefono (#PCDATA)>
+<!ELEMENT sexo (#PCDATA)>
+<!ELEMENT calificacion (#PCDATA)>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE personas SYSTEM "personas.dtd">
+<personas>
+    <persona>
+        <nombre>Sophie</nombre>
+        <apellidos>Mosnier Hidalgo</apellidos>
+        <usuario>Chopie</usuario>
+        <fecha_nacimiento>2002-01-06</fecha_nacimiento>
+        <telefono>698191864</telefono>
+        <sexo>Mujer</sexo>
+        <calificacion>8</calificacion>
+    </persona>
+    <persona>
+        <nombre>Daniel</nombre>
+        <apellidos>Losada Martinez</apellidos>
+        <usuario>Noire</usuario>
+        <fecha_nacimiento>2001-01-08</fecha_nacimiento>
+        <telefono>698162988</telefono>
+        <sexo>Hombre</sexo>
+        <calificacion>7</calificacion>
+    </persona>
+    <persona>
+        <nombre>Adolfo</nombre>
+        <apellidos>Fanjul Sanchez</apellidos>
+        <usuario>Folfo</usuario>
+        <fecha_nacimiento>2001-11-21</fecha_nacimiento>
+        <telefono>698133616</telefono>
+        <sexo>Hombre</sexo>
+        <calificacion>9</calificacion>
+    </persona>
+</personas>

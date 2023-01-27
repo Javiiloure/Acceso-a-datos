@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<insituto xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="instituto.xsd">
+    <alumnos>
+        <alumno dni="39469661M">
+            <nombre>Javier</nombre>
+            <apellido1>Loureiro</apellido1>
+            <apellido2>Pérez</apellido2>
+            <telefono>634616442</telefono>
+        </alumno>
+        <alumno dni="77013733G">
+            <nombre>Sergio</nombre>
+            <apellido1>Fernández</apellido1>
+            <apellido2>Rodríguez</apellido2>
+            <telefono>618575371</telefono>
+        </alumno>
+    </alumnos>
+    <modulos>
+        <modulo id="1">
+            <nombre>Programación Multimedia</nombre>
+            <curso>2º</curso>
+            <ciclo>Desarrollo de Aplicaciones Multiplataforma</ciclo>
+            <horas>42</horas>
+        </modulo>
+        <modulo id="2">
+            <nombre>Desarrollo de Interfaces</nombre>
+            <curso>2º</curso>
+            <ciclo>Desarrollo de Aplicaciones Multiplataforma</ciclo>
+            <horas>38</horas>
+        </modulo>
+    </modulos>
+    <resultados>
+        <cursa alumno="39469661M" modulo="1">
+            <anho>2023</anho>
+            <nota>8</nota>
+        </cursa>
+        <cursa alumno="39469661M" modulo="2">
+            <anho>2023</anho>
+            <nota>7</nota>
+        </cursa>
+        <cursa alumno="77013733G" modulo="1">
+            <anho>2023</anho>
+            <nota>3</nota>
+        </cursa>
+        <cursa alumno="77013733G" modulo="2">
+            <anho>2023</anho>
+            <nota>2</nota>
+        </cursa>
+    </resultados>
+</insituto>
