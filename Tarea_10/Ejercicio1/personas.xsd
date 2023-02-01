@@ -9,18 +9,19 @@
                             <xsd:element name="nombre" type="xsd:string" />
                             <xsd:element name="apellidos" type="xsd:string" />
                             <xsd:element name="usuario">
-                            <xsd:simpleType>
-                                <xsd:restriction base="xsd:string">
-                                    <xsd:maxLength value="9" />
-                                    <xsd:minLength value="4" />
-                                </xsd:restriction>
-                            </xsd:simpleType>        
-                        </xsd:element>
+                                <xsd:simpleType>
+                                    <xsd:restriction base="xsd:string">
+                                        <xsd:maxLength value="9" />
+                                        <xsd:minLength value="4" />
+                                    </xsd:restriction>
+                                </xsd:simpleType>
+                            </xsd:element>
                             <xsd:element name="fecha_nacimiento" type="xsd:date" />
                             <xsd:element name="telefono">
                                 <xsd:simpleType>
                                     <xsd:restriction base="xsd:string">
-                                        <xsd:pattern value="[6][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]" />
+                                        <xsd:pattern
+                                            value="[6][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]" />
                                         <xsd:length value="9" />
                                     </xsd:restriction>
                                 </xsd:simpleType>

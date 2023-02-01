@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<insituto xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<instituto xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:noNamespaceSchemaLocation="instituto.xsd">
     <alumnos>
         <alumno dni="39469661M">
@@ -29,22 +29,4 @@ xsi:noNamespaceSchemaLocation="instituto.xsd">
             <horas>38</horas>
         </modulo>
     </modulos>
-    <resultados>
-        <cursa alumno="39469661M" modulo="1">
-            <anho>2023</anho>
-            <nota>8</nota>
-        </cursa>
-        <cursa alumno="39469661M" modulo="2">
-            <anho>2023</anho>
-            <nota>7</nota>
-        </cursa>
-        <cursa alumno="77013733G" modulo="1">
-            <anho>2023</anho>
-            <nota>3</nota>
-        </cursa>
-        <cursa alumno="77013733G" modulo="2">
-            <anho>2023</anho>
-            <nota>2</nota>
-        </cursa>
-    </resultados>
-</insituto>
+</instituto>

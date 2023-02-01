@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="instituto">
+        <xsd:complexType>
+            <xsd:element name="alumnos" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:element name="alumno" maxOccurs="unbounded">
+                        <xsd:key>
+                            <xsd:attribute name="dni" use="required">
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:pattern
+                                        value="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][A-Z]" />
+                                </xsd:restriction>
+                            </xsd:attribute>
+                        </xsd:key>
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="nombre" type="xsd:string" />
+                                <xsd:element name="apellido1" type="xsd:string" />
+                                <xsd:element name="apellido2" type="xsd:string" />
+                                <xsd:element name="telefono">
+                                    <xsd:restriction base="xsd:string">
+                                        <xsd:pattern
+                                            value="[6][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]" />
+                                        <xsd:length value="9" />
+                                    </xsd:restriction>
+                                </xsd:element>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="modulos">
+                <xsd:complexType>
+                    <xsd:element name="modulo" maxOccurs="unbounded">
+                        <xsd:key>
+                            <xsd:attribute name="id" type="xsd:positiveInteger" />
+                        </xsd:key>
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="nombre" type="xsd:string" />
+                                <xsd:element name="curso" type="xsd:string" />
+                                <xsd:element name="ciclo" type="xsd:string" />
+                                <xsd:element name="horas" type="xsd:positiveInteger" />
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
