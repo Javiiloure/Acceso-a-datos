@@ -1,6 +1,10 @@
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JTextArea;
 import javax.swing.JFileChooser;
@@ -16,6 +20,19 @@ import org.w3c.dom.NodeList;
 public class Main {
 
 	public static void main(String[] args) {
+		
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Interfaz interfaz = new Interfaz();
+					interfaz.setVisible(true);
+					interfaz.setResizable(false);
+					interfaz.setLocationRelativeTo(null);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		
 		//Crea el String con la cadena XML
 		String texto ="<Libros><Libro id=\"1\"><Titulo>El secreto</Titulo><Autor>Javier Loureiro</Autor><Paginas>284</Paginas><Fecha>14/02/2022</Fecha></Libro><Libro id=\"1\"><Titulo>El secreto</Titulo><Autor>Javier Loureiro</Autor><Paginas>284</Paginas><Fecha>14/02/2022</Fecha></Libro></Libros>";
@@ -79,7 +96,40 @@ public class Main {
 		}
 	}
 	
-	public static void crearXML() {
+	public static void crearXML(CrearXML crearXML) {
 		
+		ArrayList<Libro> libros = new ArrayList<Libro>();
+		
+		crearXML.añadirLibro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				String titulo = crearXML.inputTitulo.getText();
+				String autor = crearXML.inputAutor.getText();
+				String paginas = crearXML.inputPaginas.getText();
+				String fecha = crearXML.inputFecha.getText();
+				
+				Libro libro = new Libro(titulo, autor, paginas, fecha);
+				libros.add(libro);
+				crearXML.mostrarLibros.setText(crearXML.mostrarLibros.getText() + libro.toString() + "\n");
+			}
+		});
+		
+		crearXML.borrarUltimo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				libros.remove(libros.size() - 1);
+				
+				String aux = "";
+				int last = crearXML.mostrarLibros.getText().lastIndexOf("Libro");
+				for(int i = 0; i < last; i ++) {
+					aux += crearXML.mostrarLibros.getText().charAt(i);
+				}
+				crearXML.mostrarLibros.setText(aux);
+			}
+		});
+		
+		crearXML.guardarArchivo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				
+			}
+		});
 	}
 }
