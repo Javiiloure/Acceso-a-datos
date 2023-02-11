@@ -1,6 +1,4 @@
 
-import javax.xml.bind.annotation.XmlRootElement;
-
 public class Libro {
 
 	int id;

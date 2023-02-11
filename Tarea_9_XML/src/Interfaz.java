@@ -39,8 +39,6 @@ public class Interfaz extends JFrame {
 		JButton mostrarXML = new JButton("Mostrar XML");
 		mostrarXML.setBounds(419, 40, 127, 35);
 		getContentPane().add(mostrarXML);
-		
-		
 		mostrarXML.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Main.mostrarXML(texto);

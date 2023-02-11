@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import javax.swing.JTextArea;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -33,27 +34,10 @@ public class Main {
 				}
 			}
 		});
-		
-		//Crea el String con la cadena XML
-		String texto ="<Libros><Libro id=\"1\"><Titulo>El secreto</Titulo><Autor>Javier Loureiro</Autor><Paginas>284</Paginas><Fecha>14/02/2022</Fecha></Libro><Libro id=\"1\"><Titulo>El secreto</Titulo><Autor>Javier Loureiro</Autor><Paginas>284</Paginas><Fecha>14/02/2022</Fecha></Libro></Libros>";
-
-		//Guarda en nombre el nombre del archivo que se creará.
-		String nombre = "libros.xml";
-
-		try{
-			//Se crea un Nuevo objeto FileWriter
-			FileWriter fichero = new  FileWriter (nombre);
-			
-			//Se escribe el fichero 
-			fichero.write(texto + "\r\n");
-			
-			//Se cierra el fichero 
-			fichero.close();
-			}catch (IOException ex) { 
-				System.out.println("Error al acceder al fichero");
-		}
 	}
 	
+	// En este metodo modificamos el cuadro de texto que nos llega desde la 
+	// interfaz mostrando los libros del archivo que se seleccione
 	public static void mostrarXML(JTextArea cuadro) {
 		String aux ="";
 		JFileChooser filechooser = new JFileChooser();
@@ -96,8 +80,10 @@ public class Main {
 		}
 	}
 	
+	// Metodo para crear un nuevo archivo al que le llega el Frame de crear archivos
 	public static void crearXML(CrearXML crearXML) {
 		
+		//ArrayList de libros que usaremos a la hora de guardar el archivo
 		ArrayList<Libro> libros = new ArrayList<Libro>();
 		
 		crearXML.añadirLibro.addActionListener(new ActionListener() {
@@ -113,10 +99,10 @@ public class Main {
 			}
 		});
 		
+		// Borramos el ultimo libro añadido
 		crearXML.borrarUltimo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				libros.remove(libros.size() - 1);
-				
 				String aux = "";
 				int last = crearXML.mostrarLibros.getText().lastIndexOf("Libro");
 				for(int i = 0; i < last; i ++) {
@@ -126,9 +112,32 @@ public class Main {
 			}
 		});
 		
+		// Guardamos el archivo
 		crearXML.guardarArchivo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				
+				String nombre = JOptionPane.showInputDialog("Introduzca el nombre del archivo: ");
+				String aux = "";
+				int id = 1;
+				try {
+					FileWriter fw = new FileWriter(nombre + ".xml", true);
+					fw.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+					fw.write("<Libros>\n");
+					// Bucle for que escribe en el archivo XML los libros del ArrayList
+					for (int i = 0; i < libros.size(); i++) {
+						aux += "\t<Libro id=\"" + id +"\">\n\t\t<Titulo>" + libros.get(i).getTitulo() + "</Titulo>\n\t\t"
+								+ "<Autor>" + libros.get(i).getAutor() + "</Autor>\n\t\t"
+								+ "<Paginas>" + libros.get(i).getPaginas() + "</Paginas>\n\t\t"
+								+ "<Fecha>" + libros.get(i).getFecha() + "</Fecha>\n" + "\t</Libro>\n";
+						id++;
+					}
+					fw.write(aux);
+					fw.write("</Libros>");
+					fw.flush();
+					fw.close();
+					crearXML.setVisible(false);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		});
 	}

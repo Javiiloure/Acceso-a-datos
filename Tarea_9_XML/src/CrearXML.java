@@ -19,7 +19,8 @@ public class CrearXML extends JFrame {
 	protected JButton guardarArchivo;
 	
 	public CrearXML() {
-		setDefaultCloseOperation(Interfaz.EXIT_ON_CLOSE);
+		setTitle("Crear XML");
+		setDefaultCloseOperation(CrearXML.EXIT_ON_CLOSE);
 		setBounds(100, 100, 642, 698);
 		getContentPane().setLayout(null);
 		
