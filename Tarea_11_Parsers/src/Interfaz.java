@@ -111,7 +111,11 @@ public class Interfaz extends javax.swing.JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ev) {
 				if(archivo != null) {
-				dom.monstrarXML(contenido, archivo);
+				try {
+					dom.mostrarXML(contenido, archivo);
+				} catch (Exception e) {
+					JOptionPane.showMessageDialog(null, "Ha ocurrido un error", "Error", JOptionPane.ERROR_MESSAGE);
+				}
 				} else {
 					JOptionPane.showMessageDialog(null, "No hay ningun archivo seleccionado.",
 						      "Error", JOptionPane.ERROR_MESSAGE);
@@ -121,7 +125,17 @@ public class Interfaz extends javax.swing.JFrame {
 		añadir_nodo.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent ev) {
-				dom.añadirNodo();
+				if(archivo != null){
+					try {
+						dom.añadirNodo(contenido, archivo);
+					} catch(Exception e) {
+						e.printStackTrace();
+						JOptionPane.showMessageDialog(null, "Ha ocurrido un error", "Error", JOptionPane.ERROR_MESSAGE);
+					}
+				} else {
+					JOptionPane.showMessageDialog(null, "No hay ningun archivo seleccionado.",
+						      "Error", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 		gestionar_DOM.add(crear_XML);
