@@ -3,6 +3,14 @@ import javax.swing.JTextArea;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
+import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -63,9 +71,10 @@ public class DOM {
 			DocumentBuilder documentBuilder = dbf.newDocumentBuilder();
 			Document document = documentBuilder.parse(archivo);
 			document.getDocumentElement().normalize();
+			String id;
+			Element elementos = document.getDocumentElement();
+			List<Element> lista = getChildElements(elementos);
 			
-
-		
 		// Cuadro con opciones a elegir elemento padre o hijo
 		String[] opciones = {"Elemento padre", "Elemento hijo"}; 
 		int select = JOptionPane.showOptionDialog(null, "Seleccione el tipo de elemento a crear: ",
@@ -73,20 +82,47 @@ public class DOM {
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones[0]);
 		
 		switch(select) {
-			// Creamos elemento padre
 		case 0:
+			// Creamos elemento padre
 			
-			Element raiz = document.getDocumentElement();
-			NodeList lista = document.getElementsByTagName("Elemento");
-			int id = lista.getLength() + 1;
+			id = String.valueOf(lista.size() + 1);
 			
-			Element element = document.createElement("Elemento_X");
-			document.appendChild(element);
-			element.setAttribute("id", String.valueOf(id));
+			Element elemento = document.createElement("Elemento");
+			Attr attr = document.createAttribute("id");
+			attr.setValue(String.valueOf(id));
+			elemento.setAttributeNode(attr);
+			
+			String subelementos = JOptionPane.showInputDialog("Introduzca el numero de subelementos: ");
+			Element subelemento;
+			
+			// Creamos los elementos hijos
+			for (int i = 1; i <= Integer.parseInt(subelementos); i++) {
+				subelemento = document.createElement("Subelemento_" + i);
+				subelemento.appendChild(document.createTextNode("Subelemento " + i));
+				elemento.appendChild(subelemento);
+			}			
+			elementos.appendChild(elemento);
+
+			TransformerFactory tranFactory = TransformerFactory.newInstance();
+			Transformer aTransformer = tranFactory.newTransformer();
+
+			Source src = new DOMSource(document);
+			Result dest = new StreamResult(System.out);
+			aTransformer.transform(src, dest);
+			
 			break;
-			// Creamos elemento hijo
 		case 1:
-			System.out.println("Hola");
+			// Creamos el elemento hijo
+			id = JOptionPane.showInputDialog("Introduzca el id del padre: ");
+			Element padre = document.createElement("Padre");
+			for(int i = 0; i < lista.size(); i++) {
+				if(lista.get(i).getAttribute("id").equals(id)) {
+					padre = lista.get(i);
+					break;
+				}
+			}
+			Element hijo = document.createElement("Subelemento_X");
+			padre.appendChild(hijo);		
 		}
 	}
 
