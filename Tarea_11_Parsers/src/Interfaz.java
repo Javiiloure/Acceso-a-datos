@@ -23,7 +23,7 @@ public class Interfaz extends javax.swing.JFrame {
 	protected DOM dom = new DOM();
 	protected SAX sax = new SAX();
 	protected StAX stax = new StAX();
-	JTextArea contenido;
+	protected static JTextArea contenido;
 	protected File archivo;
 	
 	public static void main(String[] args) {
@@ -104,7 +104,12 @@ public class Interfaz extends javax.swing.JFrame {
 		crear_XML.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent ev) {
-				dom.crearXML();
+				try {
+					dom.crearXML();
+				} catch(Exception e) {
+					e.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Ha ocurrido un error", "Error", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 		mostrar_XML.addActionListener(new ActionListener() {
@@ -114,6 +119,7 @@ public class Interfaz extends javax.swing.JFrame {
 				try {
 					dom.mostrarXML(contenido, archivo);
 				} catch (Exception e) {
+					e.printStackTrace();
 					JOptionPane.showMessageDialog(null, "Ha ocurrido un error", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 				} else {

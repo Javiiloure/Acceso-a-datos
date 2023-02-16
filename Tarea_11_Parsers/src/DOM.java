@@ -9,6 +9,7 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.OutputKeys;
 
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
@@ -22,8 +23,44 @@ import java.util.List;
 
 public class DOM {
 
-	public void crearXML() {
+	public void crearXML() throws Exception {
+		
+		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+		Document document = docBuilder.newDocument();
+		
+		Element root = document.createElement("Elementos");
+		document.appendChild(root);
+		
+		int elementos = Integer.parseInt(JOptionPane.showInputDialog("Introduzca el numero de elementos: "));
+		for(int i = 1; i <= elementos; i++) {
+			
+			// Creamos un elemento padre
+			Element elemento = document.createElement("Elemento");
+			elemento.setAttribute("id", String.valueOf(i));
+			root.appendChild(elemento);
+			
+			// Creamos los elementos hijos para el padre
+			int subelementos = Integer.parseInt(JOptionPane.showInputDialog("Introduzca el numero de subelementos del elemento " + i + ":"));
+			for (int x = 1; x <= subelementos; x++) {
+				Element subelemento = document.createElement("Subelemento_" + x);
+				subelemento.setTextContent("Subelemento " + x);
+				elemento.appendChild(subelemento);
+			}
+		}
+		
+		// Creamos el archivo y escribimos los elementos
+		String nombre_archivo = JOptionPane.showInputDialog("Introduzca el nombre del archivo: ");
+		File file = new File(nombre_archivo + ".xml");
+		TransformerFactory tranFactory = TransformerFactory.newInstance();
+		Transformer transformer = tranFactory.newTransformer();
+		Source src = new DOMSource(document);
+		Result dest = new StreamResult(file);
 
+		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+		transformer.transform(src, dest);
+		
+		mostrarXML(Interfaz.contenido, file);
 	}
 
 	public void mostrarXML(JTextArea cuadro, File archivo) throws Exception {
@@ -60,7 +97,6 @@ public class DOM {
 						+ element.getElementsByTagName("Subelemento_" + x).item(0).getTextContent();
 			}
 		}
-
 		// Cambiamos el texto de la caja por aux
 		cuadro.setText(aux);
 	}
@@ -75,6 +111,11 @@ public class DOM {
 			Element elementos = document.getDocumentElement();
 			List<Element> lista = getChildElements(elementos);
 			
+			TransformerFactory tranFactory = TransformerFactory.newInstance();
+			Transformer transformer = tranFactory.newTransformer();
+			Source src = new DOMSource(document);
+			Result dest = new StreamResult(archivo);
+			
 		// Cuadro con opciones a elegir elemento padre o hijo
 		String[] opciones = {"Elemento padre", "Elemento hijo"}; 
 		int select = JOptionPane.showOptionDialog(null, "Seleccione el tipo de elemento a crear: ",
@@ -84,9 +125,7 @@ public class DOM {
 		switch(select) {
 		case 0:
 			// Creamos elemento padre
-			
 			id = String.valueOf(lista.size() + 1);
-			
 			Element elemento = document.createElement("Elemento");
 			Attr attr = document.createAttribute("id");
 			attr.setValue(String.valueOf(id));
@@ -103,26 +142,42 @@ public class DOM {
 			}			
 			elementos.appendChild(elemento);
 
-			TransformerFactory tranFactory = TransformerFactory.newInstance();
-			Transformer aTransformer = tranFactory.newTransformer();
-
-			Source src = new DOMSource(document);
-			Result dest = new StreamResult(System.out);
-			aTransformer.transform(src, dest);
-			
+			// Escribimos los cambios en el archivo
+			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+			transformer.transform(src, dest);
+			mostrarXML(cuadro, archivo);
 			break;
 		case 1:
 			// Creamos el elemento hijo
 			id = JOptionPane.showInputDialog("Introduzca el id del padre: ");
 			Element padre = document.createElement("Padre");
+			boolean encontrado = false;
+			
 			for(int i = 0; i < lista.size(); i++) {
 				if(lista.get(i).getAttribute("id").equals(id)) {
 					padre = lista.get(i);
+					encontrado = true;
 					break;
 				}
 			}
-			Element hijo = document.createElement("Subelemento_X");
-			padre.appendChild(hijo);		
+			
+			if (encontrado) {
+				// Obtenemos el numero de subelementos que tiene el padre
+				// y creamos el nuevo subelemento
+				lista = getChildElements(padre);
+				int aux = lista.size() + 1;
+				Element hijo = document.createElement("Subelemento_" + aux);
+				hijo.setTextContent("Subelemento " + aux);
+				padre.appendChild(hijo);
+
+				// Escribimos los cambios en el archivo
+				transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+				transformer.transform(src, dest);
+				mostrarXML(cuadro, archivo);
+			} else {
+				JOptionPane.showMessageDialog(null, "No se ha encontrado el elemento con el id dado.", "Error",
+						JOptionPane.ERROR_MESSAGE);
+			}
 		}
 	}
 
